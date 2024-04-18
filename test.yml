@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: app
   labels:
-    app: my-app
+    app: app
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: my-app
+      app: app
   template:
     metadata:
       labels:
-        app: my-app
+        app: app
     spec:
       containers:
-      - name: my-app
-        image: your-image:latest
+      - name: app
+        image: image:latest
         resources:
           requests:
             cpu: "500m"
@@ -48,17 +48,17 @@ spec:
       tolerations:
       - key: "dedicated"
         operator: "Equal"
-        value: "my-app"
+        value: "app"
         effect: "NoSchedule"
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: my-app-autoscaler
+  name: app-autoscaler
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: my-app
+    name: app
   minReplicas: 4
   maxReplicas: 10
   metrics:
