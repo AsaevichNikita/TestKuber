@@ -50,7 +50,6 @@ spec:
         operator: "Equal"
         value: "my-app"
         effect: "NoSchedule"
----
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
